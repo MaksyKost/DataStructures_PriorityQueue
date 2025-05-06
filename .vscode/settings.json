@@ -72,7 +72,6 @@
         "numbers": "cpp",
         "span": "cpp",
         "text_encoding": "cpp",
-        "variant": "cpp",
-        "fstream": "cpp"
+        "variant": "cpp"
     }
 }
