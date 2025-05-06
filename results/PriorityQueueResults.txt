@@ -3,9 +3,108 @@
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 1000 elementów ====
 
 *** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 1000 (średnia z 5 seedów):
-  Wstawienie (insert):       0.000191152 s
-  Pobranie max (extractMax): 7.306e-07 s
-  Modyfikacja priorytetu:    0.000431345 s
+  Wstawienie (insert):          8.27e-07 s
+  Pobranie max (extractMax):    7.18e-08 s
+  Podejrzenie max (peek):       2.9e-08 s
+  Zwiększenie priorytetu:       1.4686e-06 s
+  Zmniejszenie priorytetu:      1.4886e-06 s
+  Zwrot rozmiaru (size):        2.96e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 2000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 2000 (średnia z 5 seedów):
+  Wstawienie (insert):          2.3828e-06 s
+  Pobranie max (extractMax):    1.134e-07 s
+  Podejrzenie max (peek):       3.28e-08 s
+  Zwiększenie priorytetu:       4.398e-06 s
+  Zmniejszenie priorytetu:      5.0268e-06 s
+  Zwrot rozmiaru (size):        2.34e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 3000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 3000 (średnia z 5 seedów):
+  Wstawienie (insert):          4.0388e-06 s
+  Pobranie max (extractMax):    1.316e-07 s
+  Podejrzenie max (peek):       3.34e-08 s
+  Zwiększenie priorytetu:       7.1568e-06 s
+  Zmniejszenie priorytetu:      8.2368e-06 s
+  Zwrot rozmiaru (size):        2.94e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 4000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 4000 (średnia z 5 seedów):
+  Wstawienie (insert):          5.1914e-06 s
+  Pobranie max (extractMax):    1.556e-07 s
+  Podejrzenie max (peek):       3.48e-08 s
+  Zwiększenie priorytetu:       9.4394e-06 s
+  Zmniejszenie priorytetu:      1.1729e-05 s
+  Zwrot rozmiaru (size):        2.54e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 5000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 5000 (średnia z 5 seedów):
+  Wstawienie (insert):          7.2828e-06 s
+  Pobranie max (extractMax):    1.724e-07 s
+  Podejrzenie max (peek):       3.24e-08 s
+  Zwiększenie priorytetu:       1.17766e-05 s
+  Zmniejszenie priorytetu:      1.52598e-05 s
+  Zwrot rozmiaru (size):        2.62e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 6000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 6000 (średnia z 5 seedów):
+  Wstawienie (insert):          8.5994e-06 s
+  Pobranie max (extractMax):    2.3e-07 s
+  Podejrzenie max (peek):       3.2e-08 s
+  Zwiększenie priorytetu:       1.50092e-05 s
+  Zmniejszenie priorytetu:      1.88312e-05 s
+  Zwrot rozmiaru (size):        2.6e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 7000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 7000 (średnia z 5 seedów):
+  Wstawienie (insert):          9.638e-06 s
+  Pobranie max (extractMax):    2.244e-07 s
+  Podejrzenie max (peek):       3.4e-08 s
+  Zwiększenie priorytetu:       1.7879e-05 s
+  Zmniejszenie priorytetu:      2.2464e-05 s
+  Zwrot rozmiaru (size):        2.72e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 8000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 8000 (średnia z 5 seedów):
+  Wstawienie (insert):          1.12536e-05 s
+  Pobranie max (extractMax):    2.516e-07 s
+  Podejrzenie max (peek):       3.82e-08 s
+  Zwiększenie priorytetu:       2.07002e-05 s
+  Zmniejszenie priorytetu:      2.61096e-05 s
+  Zwrot rozmiaru (size):        2.8e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 9000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 9000 (średnia z 5 seedów):
+  Wstawienie (insert):          1.28462e-05 s
+  Pobranie max (extractMax):    2.728e-07 s
+  Podejrzenie max (peek):       3.48e-08 s
+  Zwiększenie priorytetu:       2.40522e-05 s
+  Zmniejszenie priorytetu:      3.0871e-05 s
+  Zwrot rozmiaru (size):        2.7e-08 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 10000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 10000 (średnia z 5 seedów):
+  Wstawienie (insert):          1.44776e-05 s
+  Pobranie max (extractMax):    3.344e-07 s
+  Podejrzenie max (peek):       3.98e-08 s
+  Zwiększenie priorytetu:       2.82358e-05 s
+  Zmniejszenie priorytetu:      3.57744e-05 s
+  Zwrot rozmiaru (size):        2.7e-08 s
