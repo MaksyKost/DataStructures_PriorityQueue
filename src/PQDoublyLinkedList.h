@@ -39,7 +39,7 @@ public:
     void modifyKey(int e, int p);
     
     // Zwraca liczbę elementów w kolejce
-    int size() const;
+    int returnSize() const;
     
     // Czyści kolejkę (usuwa wszystkie elementy)
     void clear();

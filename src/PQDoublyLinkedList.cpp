@@ -130,7 +130,7 @@ void PriorityQueueDLL::modifyKey(int e, int p) {
 }
 
 // Zwraca rozmiar kolejki, przeglądając listę
-int PriorityQueueDLL::size() const {
+int PriorityQueueDLL::returnSize() const {
     int count = 0;
     PQNode* current = head;
     while (current) {

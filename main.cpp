@@ -12,7 +12,7 @@ int main()
     pq.insert(30, 3);
     pq.insert(40, 15);
     
-    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.size() << std::endl;
+    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
 
 
     // Wyświetlenie kolejki
@@ -29,7 +29,7 @@ int main()
     pq.extractMax();
     pq.print();
     
-    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.size() << std::endl;
+    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
 
 
 
@@ -40,10 +40,11 @@ int main()
 
     // Wypełnienie kolejki losowymi danymi
     std::cout << "Dodanie losowych danych...\n";
-    pq.fillRandom(5, 42);
+    pq.clear();
+    pq.fillRandom(6, 42);
     pq.print();
 
-    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.size() << std::endl;
+    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
     
 
 
