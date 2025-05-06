@@ -1,0 +1,11 @@
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 1000 elementów ====
+
+*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru 1000 (średnia z 5 seedów):
+  Wstawienie (insert):       0.000191152 s
+  Pobranie max (extractMax): 7.306e-07 s
+  Modyfikacja priorytetu:    0.000431345 s
+
+
+==== Testowanie kolejki priorytetowej dla rozmiaru: 5000 elementów ====
