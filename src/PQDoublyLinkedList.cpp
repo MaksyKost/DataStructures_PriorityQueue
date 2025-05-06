@@ -10,6 +10,7 @@ PriorityQueueDLL::~PriorityQueueDLL() {
 // Wstawia nowy węzeł w porządku malejącym wg priorytetu
 void PriorityQueueDLL::insert(int e, int p) {
     PQNode* newNode = new PQNode(e, p);
+    size++;
 
     // Jeśli kolejka jest pusta – nowy węzeł staje się head i tail
     if (!head) {
@@ -43,14 +44,15 @@ void PriorityQueueDLL::insert(int e, int p) {
     current->next = newNode;
 }
 
+
 // Usuwa i zwraca element o największym priorytecie (czyli head listy)
-std::pair<int, int> PriorityQueueDLL::extractMax() {
+int PriorityQueueDLL::extractMax() {
     if (!head) {
         throw std::runtime_error("Kolejka jest pusta");
     }
     
     PQNode* temp = head;
-    std::pair<int, int> result = { temp->value, temp->priority };
+    int result = temp->value;
     
     head = head->next;
     if (head) {
@@ -59,17 +61,21 @@ std::pair<int, int> PriorityQueueDLL::extractMax() {
         tail = nullptr;
     }
     
+    size--;
     delete temp;
     return result;
 }
 
+
+
 // Zwraca element o najwyższym priorytecie bez usuwania
-std::pair<int, int> PriorityQueueDLL::peek() const {
+int PriorityQueueDLL::peek() const {
     if (!head) {
         throw std::runtime_error("Kolejka jest pusta");
     }
-    return { head->value, head->priority };
+    return head->value;
 }
+
 
 // Modyfikacja priorytetu elementu.
 // Szukamy pierwszego wystąpienia węzła o podanej wartości, usuwamy go z kolejki,
@@ -130,15 +136,7 @@ void PriorityQueueDLL::modifyKey(int e, int p) {
 }
 
 // Zwraca rozmiar kolejki, przeglądając listę
-int PriorityQueueDLL::returnSize() const {
-    int count = 0;
-    PQNode* current = head;
-    while (current) {
-        count++;
-        current = current->next;
-    }
-    return count;
-}
+int PriorityQueueDLL::returnSize() const { return size; }
 
 // Usuwa wszystkie elementy z kolejki
 void PriorityQueueDLL::clear() {
@@ -149,6 +147,7 @@ void PriorityQueueDLL::clear() {
         current = next;
     }
     head = tail = nullptr;
+    size = 0;
 }
 
 // Funkcja pomocnicza do wyświetlania zawartości kolejki
@@ -160,17 +159,9 @@ void PriorityQueueDLL::print() const {
     }
     std::cout << std::endl;
 }
-/*
+
 // Generowanie losowych danych
-void PriorityQueueDLL::fillRandom(int size, int seed) {
-    srand(seed);
-    for (int i = 0; i < size; ++i) {
-        addBegin(rand() % 10000); // Losowa liczba z zakresu 0-9999
-    }
-}*/
-// Generowanie losowych danych
-void PriorityQueueDLL::fillRandom(int size, int seed) {
-    srand(seed);
+void PriorityQueueDLL::fillRandom(int size) {
     for (int i = 0; i < size; ++i) {
         int value = rand() % 10000;    // Losowa wartość (0-9999)
         int priority = rand() % (size * 5); // Priorytet (większy zakres dla lepszego rozkładu)

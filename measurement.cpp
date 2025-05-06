@@ -17,7 +17,7 @@ double measure_time(Function func) {
 }
 
 int main() {
-    const int SIZES[] = {1000, 5000, 10000, 20000, 50000}; // Różne rozmiary testowe
+    const int SIZES[] = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
     const int TESTS = 100;
     const int SEEDS[] = {250, 300, 350, 400, 450};
 
@@ -38,7 +38,10 @@ int main() {
 
         double total_insert = 0.0;
         double total_extractMax = 0.0;
-        double total_modifyKey = 0.0;
+        double total_peek = 0.0;
+        double total_modifyKeyIncrease = 0.0;
+        double total_modifyKeyDecrease = 0.0;
+        double total_size = 0.0;
         int seedCount = 0;
 
         for (int seed : SEEDS) {
@@ -46,12 +49,15 @@ int main() {
 
             double insert_sum = 0.0;
             double extractMax_sum = 0.0;
-            double modifyKey_sum = 0.0;
+            double peek_sum = 0.0;
+            double modifyKeyIncrease_sum = 0.0;
+            double modifyKeyDecrease_sum = 0.0;
+            double size_sum = 0.0;
 
             PriorityQueueDLL pq;
 
             for (int t = 0; t < TESTS; t++) {
-                pq.fillRandom(size, seed);
+                pq.fillRandom(size);
 
                 // Pomiar operacji insert (dodanie losowego elementu)
                 int value = rand() % 10000;
@@ -67,20 +73,45 @@ int main() {
                     });
                 }
 
-                // Pomiar operacji modifyKey (zmiana priorytetu losowego elementu)
+                // Pomiar operacji peek (podejrzenie maksymalnego elementu)
                 if (pq.returnSize() > 0) {
-                    int modify_value = rand() % 10000;
-                    int new_priority = rand() % (size * 5);
-                    modifyKey_sum += measure_time([&]() {
-                        pq.modifyKey(modify_value, new_priority);
+                    peek_sum += measure_time([&]() {
+                        pq.peek();
                     });
                 }
+
+                // Pomiar operacji modifyKeyIncrease (zwiększenie priorytetu)
+                if (pq.returnSize() > 0) {
+                    int modify_value = rand() % 10000;
+                    int new_priority_high = rand() % (size * 10); // Wyższy priorytet
+                    modifyKeyIncrease_sum += measure_time([&]() {
+                        pq.modifyKey(modify_value, new_priority_high);
+                    });
+                }
+
+                // Pomiar operacji modifyKeyDecrease (zmniejszenie priorytetu)
+                if (pq.returnSize() > 0) {
+                    int modify_value = rand() % 10000;
+                    int new_priority_low = rand() % (size / 2); // Niższy priorytet
+                    modifyKeyDecrease_sum += measure_time([&]() {
+                        pq.modifyKey(modify_value, new_priority_low);
+                    });
+                }
+
+                // Pomiar operacji size (zwrócenie rozmiaru)
+                size_sum += measure_time([&]() {
+                    pq.returnSize();
+                });
+                pq.clear();
             }
 
             // Średnie wyniki dla danego seeda
             total_insert += insert_sum / TESTS;
             total_extractMax += extractMax_sum / TESTS;
-            total_modifyKey += modifyKey_sum / TESTS;
+            total_peek += peek_sum / TESTS;
+            total_modifyKeyIncrease += modifyKeyIncrease_sum / TESTS;
+            total_modifyKeyDecrease += modifyKeyDecrease_sum / TESTS;
+            total_size += size_sum / TESTS;
             seedCount++;
         }
 
@@ -89,13 +120,19 @@ int main() {
         pqFile << "\n*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru " 
                << size << " (średnia z " << seedCount << " seedów):\n";
         
-        cout << "  Wstawienie (insert):       " << (total_insert / seedCount) << " s\n";
-        cout << "  Pobranie max (extractMax): " << (total_extractMax / seedCount) << " s\n";
-        cout << "  Modyfikacja priorytetu:    " << (total_modifyKey / seedCount) << " s\n";
+        cout << "  Wstawienie (insert):          " << (total_insert / seedCount) << " s\n";
+        cout << "  Pobranie max (extractMax):    " << (total_extractMax / seedCount) << " s\n";
+        cout << "  Podejrzenie max (peek):       " << (total_peek / seedCount) << " s\n";
+        cout << "  Zwiększenie priorytetu:       " << (total_modifyKeyIncrease / seedCount) << " s\n";
+        cout << "  Zmniejszenie priorytetu:      " << (total_modifyKeyDecrease / seedCount) << " s\n";
+        cout << "  Zwrot rozmiaru (size):        " << (total_size / seedCount) << " s\n";
 
-        pqFile << "  Wstawienie (insert):       " << (total_insert / seedCount) << " s\n";
-        pqFile << "  Pobranie max (extractMax): " << (total_extractMax / seedCount) << " s\n";
-        pqFile << "  Modyfikacja priorytetu:    " << (total_modifyKey / seedCount) << " s\n";
+        pqFile << "  Wstawienie (insert):          " << (total_insert / seedCount) << " s\n";
+        pqFile << "  Pobranie max (extractMax):    " << (total_extractMax / seedCount) << " s\n";
+        pqFile << "  Podejrzenie max (peek):       " << (total_peek / seedCount) << " s\n";
+        pqFile << "  Zwiększenie priorytetu:       " << (total_modifyKeyIncrease / seedCount) << " s\n";
+        pqFile << "  Zmniejszenie priorytetu:      " << (total_modifyKeyDecrease / seedCount) << " s\n";
+        pqFile << "  Zwrot rozmiaru (size):        " << (total_size / seedCount) << " s\n";
     }
 
     // Zamknięcie pliku

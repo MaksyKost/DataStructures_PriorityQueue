@@ -18,7 +18,7 @@ class PriorityQueueDLL {
 private:
     PQNode* head; // wskaźnik na początek listy (element o największym priorytecie)
     PQNode* tail; // wskaźnik na koniec listy
-    
+    int size{};
 public:
     PriorityQueueDLL();
     ~PriorityQueueDLL();
@@ -28,10 +28,10 @@ public:
     void insert(int e, int p);
     
     // Usunięcie (i zwrócenie) elementu o najwyższym priorytecie [jeśli kolejka pusta – zgłoszenie wyjątku]
-    std::pair<int, int> extractMax();
+    int extractMax();
     
     // Podejrzenie elementu o najwyższym priorytecie (bez usuwania)
-    std::pair<int, int> peek() const;
+    int peek() const;
     
     // Modyfikacja priorytetu danego elementu.
     // W tej implementacji szukamy węzła o podanej wartości, usuwamy go, aktualizujemy klucz,
@@ -47,7 +47,7 @@ public:
     // Pomocnicza funkcja do wyświetlania zawartości kolejki (dla celów debugowania)
     void print() const;
 
-    void fillRandom(int size, int seed);
+    void fillRandom(int size);
 };
 
 #endif // PRIORITYQUEUE_DLL_H

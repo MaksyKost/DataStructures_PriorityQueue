@@ -19,10 +19,6 @@ int main()
     std::cout << "Kolejka po wstawieniu elementów:\n";
     pq.print();
     
-    // Podejrzenie maksymalnego elementu
-    std::cout << "Element o najwyższym priorytecie: ";
-    auto maxElement = pq.peek();
-    std::cout << "(" << maxElement.first << ", " << maxElement.second << ")\n";
     
     // Usunięcie elementu o najwyższym priorytecie
     std::cout << "Usuwanie elementu o najwyższym priorytecie...\n";
@@ -41,7 +37,7 @@ int main()
     // Wypełnienie kolejki losowymi danymi
     std::cout << "Dodanie losowych danych...\n";
     pq.clear();
-    pq.fillRandom(6, 42);
+    pq.fillRandom(6);
     pq.print();
 
     std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
