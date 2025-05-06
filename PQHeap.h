@@ -1,6 +1,7 @@
 #ifndef PQHeap_H
 #define PQHeap_H
 #include <utility>
+#include <vector>
 
 struct Element {
     int e; //value
@@ -33,7 +34,21 @@ public:
 };
 
 class HeapPriorityQueue : public PriorityQueue {
+private:
+    std::vector<Element> heap;
 
+    void up(int index);
+    void down(int index);
+    void findIndex(int value) const;
+
+public:
+    void insert(int e, int p) override;
+    Element extractMax() override;
+    Element peek() const override;
+    void modifyKey(int e, int p) const override;
+    int returnSize() const override;
+    void clear() override;
+    void fillRandom(int size, int seed) override;
 };
 
 #endif
