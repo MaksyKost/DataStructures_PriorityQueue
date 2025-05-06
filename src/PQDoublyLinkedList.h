@@ -25,7 +25,7 @@ public:
     
     // Operacje kolejki priorytetowej:
     // Wstawienie elementu (wartość, priorytet) z zachowaniem porządku malejącego wg priorytetu.
-    void insert(int value, int priority);
+    void insert(int e, int p);
     
     // Usunięcie (i zwrócenie) elementu o najwyższym priorytecie [jeśli kolejka pusta – zgłoszenie wyjątku]
     std::pair<int, int> extractMax();
@@ -36,7 +36,7 @@ public:
     // Modyfikacja priorytetu danego elementu.
     // W tej implementacji szukamy węzła o podanej wartości, usuwamy go, aktualizujemy klucz,
     // a następnie wstawiamy ponownie, zachowując właściwy porządek.
-    void modifyKey(int value, int newPriority);
+    void modifyKey(int e, int p);
     
     // Zwraca liczbę elementów w kolejce
     int size() const;
@@ -46,6 +46,8 @@ public:
     
     // Pomocnicza funkcja do wyświetlania zawartości kolejki (dla celów debugowania)
     void print() const;
+
+    void fillRandom(int size, int seed);
 };
 
 #endif // PRIORITYQUEUE_DLL_H

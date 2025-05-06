@@ -8,8 +8,8 @@ PriorityQueueDLL::~PriorityQueueDLL() {
 }
 
 // Wstawia nowy węzeł w porządku malejącym wg priorytetu
-void PriorityQueueDLL::insert(int value, int priority) {
-    PQNode* newNode = new PQNode(value, priority);
+void PriorityQueueDLL::insert(int e, int p) {
+    PQNode* newNode = new PQNode(e, p);
 
     // Jeśli kolejka jest pusta – nowy węzeł staje się head i tail
     if (!head) {
@@ -74,10 +74,10 @@ std::pair<int, int> PriorityQueueDLL::peek() const {
 // Modyfikacja priorytetu elementu.
 // Szukamy pierwszego wystąpienia węzła o podanej wartości, usuwamy go z kolejki,
 // aktualizujemy priorytet, a potem wstawiamy ponownie w odpowiednie miejsce.
-void PriorityQueueDLL::modifyKey(int value, int newPriority) {
+void PriorityQueueDLL::modifyKey(int e, int p) {
     PQNode* current = head;
     while (current) {
-        if (current->value == value)
+        if (current->value == e)
             break;
         current = current->next;
     }
@@ -96,7 +96,7 @@ void PriorityQueueDLL::modifyKey(int value, int newPriority) {
         tail = current->prev;
     
     // Aktualizujemy priorytet
-    current->priority = newPriority;
+    current->priority = p;
     current->next = current->prev = nullptr;
     
     // Ponownie wstawiamy węzeł, aby lista zachowała porządek
@@ -159,4 +159,21 @@ void PriorityQueueDLL::print() const {
         current = current->next;
     }
     std::cout << std::endl;
+}
+/*
+// Generowanie losowych danych
+void PriorityQueueDLL::fillRandom(int size, int seed) {
+    srand(seed);
+    for (int i = 0; i < size; ++i) {
+        addBegin(rand() % 10000); // Losowa liczba z zakresu 0-9999
+    }
+}*/
+// Generowanie losowych danych
+void PriorityQueueDLL::fillRandom(int size, int seed) {
+    srand(seed);
+    for (int i = 0; i < size; ++i) {
+        int value = rand() % 10000;    // Losowa wartość (0-9999)
+        int priority = rand() % (size * 5); // Priorytet (większy zakres dla lepszego rozkładu)
+        insert(value, priority);  // Wstawienie elementu zgodnie z priorytetem
+    }
 }
