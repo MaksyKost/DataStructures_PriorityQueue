@@ -6,7 +6,7 @@ Implementation and benchmarking of a priority queue in C++.
 This repository was created for the **Data Structures** course at **Wrocław University of Science and Technology**.
 
 ## 📌 Project Description
-The goal of the project is to implement a **priority queue** in C++ using two different data structures:
+The goal of the project is to implement a **MAX priority queue** in C++ using two different data structures:
 
 - **Binary Heap**
 - **Doubly Linked List**
