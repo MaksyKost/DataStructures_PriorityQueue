@@ -6,12 +6,12 @@ Implementation and benchmarking of a priority queue in C++.
 This repository was created for the **Data Structures** course at **Wrocław University of Science and Technology**.
 
 ## 📌 Project Description
-The goal of the project is to implement and benchmark two fundamental data structures in C++:
+The goal of the project is to implement a **priority queue** in C++ using two different data structures:
 
-- **Dynamic Arrays**
-- **Singly Linked Lists**
+- **Binary Heap**
+- **Doubly Linked List**
 
-The project focuses on the comparison of their performance across various operations, analyzing time complexity and behavior with different input sizes.
+The project includes the implementation of key priority queue operations as well as performance testing and comparison between the two approaches.
 
 ---
 
