@@ -93,7 +93,7 @@ void menuHeap(HeapPriorityQueue& heap) {
                 break;
             case 6:
                 std::cout << "Podaj rozmiar: "; std::cin >> e;
-                heap.fillRandom(e, seed);
+                heap.fillRandom(e);
                 break;
             case 7:
                 heap.print();

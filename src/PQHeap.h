@@ -30,7 +30,7 @@ public:
     virtual void modifyKey(int e, int p) = 0;
     virtual int returnSize() const = 0;
     virtual void clear() = 0;
-    virtual void fillRandom(int size, int seed) = 0;
+    virtual void fillRandom(int size) = 0;
     virtual void print() const = 0;
     virtual ~PriorityQueue() {}
 };
@@ -55,7 +55,7 @@ public:
     void modifyKey(int e, int p) override;
     int returnSize() const override;
     void clear() override;
-    void fillRandom(int size, int seed) override;
+    void fillRandom(int size) override;
     virtual void print() const override;
 };
 
