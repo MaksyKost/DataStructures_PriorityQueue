@@ -103,7 +103,6 @@ int HeapPriorityQueue::findIndex(int value) const {
 
 void HeapPriorityQueue::modifyKey(int e, int newPriority) {
     int a = findIndex(e);
-
     if (a == -1) {
         std::cerr << "Can't find element\n";
         return;
@@ -111,8 +110,8 @@ void HeapPriorityQueue::modifyKey(int e, int newPriority) {
 
     int oldPriority = heap[a].p;
     heap[a].p = newPriority;
-    if (newPriority < oldPriority) down(a);
-    else if (newPriority > oldPriority) up(a);
+    if (newPriority > oldPriority) up(a);
+    else down(a);
 }
 
 void HeapPriorityQueue::fillRandom(int size, int seed) {

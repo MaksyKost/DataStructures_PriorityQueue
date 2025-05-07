@@ -46,19 +46,23 @@ void menuHeap(HeapPriorityQueue& heap) {
                 std::cout << "Podaj wartość: "; std::cin >> e;
                 std::cout << "Podaj priorytet: "; std::cin >> p;
                 heap.insert(e, p);
+                std::cout << "Dodano (" << e << ", " << p << ").\n";
                 break;
-            case 2:
+            case 2: {
                 Element max = heap.extractMax();
                 std::cout << "Usunięto: (" << max.e << ", " << max.p << ")\n";
                 break;
-            case 3:
+            }
+            case 3: {
                 Element top = heap.peek();
                 std::cout << "Najwyższy priorytet: (" << top.e << ", " << top.p << ")\n";
                 break;
+            }
             case 4:
-                std::cout << "Podaj wartość: "; std::cin >> e;
+                std::cout << "Podaj wartość elementu do zmiany: "; std::cin >> e;
                 std::cout << "Podaj priorytet: "; std::cin >> p;
                 heap.modifyKey(e, p);
+                std::cout << "Zmieniono priorytet elementu " << e << " na " << p << ".\n";
                 break;
             case 5:
                 std::cout << "Rozmiar kolejki: " << heap.returnSize() << "\n";
@@ -79,7 +83,7 @@ void menuHeap(HeapPriorityQueue& heap) {
 }
 
 void menuDDL(PriorityQueueDLL& ddl) {
-    int choice, e, p, index;
+    int choice, e, p, amount;
     do {
         std::cout << "\n|------------------------- Doubly Linked List PQ MENU ------------------------|\n";
         std::cout << "| 1. Dodanie elementu e o priorytecie p                                         |\n";
@@ -100,26 +104,26 @@ void menuDDL(PriorityQueueDLL& ddl) {
                 std::cout << "Podaj wartość: "; std::cin >> e;
                 std::cout << "Podaj priorytet: "; std::cin >> p;
                 ddl.insert(e, p);
+                std::cout << "Dodano (" << e << ", " << p << ").\n";
                 break;
             case 2:
-                Element max = ddl.extractMax();
-                std::cout << "Usunięto: (" << max.e << ", " << max.p << ")\n";
+                std::cout << "Usunięto: " << ddl.extractMax() << "\n";
                 break;
             case 3:
-                Element top = ddl.peek();
-                std::cout << "Najwyższy priorytet: (" << top.e << ", " << top.p << ")\n";
+                std::cout << "Najwyższy priorytet ma: " << ddl.peek() << "\n";
                 break;
             case 4:
-                std::cout << "Podaj wartość: "; std::cin >> e;
-                std::cout << "Podaj priorytet: "; std::cin >> p;
+                std::cout << "Podaj wartość elementu do zmiany: "; std::cin >> e;
+                std::cout << "Nowy priorytet: "; std::cin >> p;
                 ddl.modifyKey(e, p);
+                std::cout << "Zmieniono priorytet elementu " << e << " na " << p << ".\n";
                 break;
             case 5:
                 std::cout << "Rozmiar kolejki: " << ddl.returnSize() << "\n";
                 break;
             case 6:
-                std::cout << "Podaj rozmiar: "; std::cin >> e;
-                ddl.fillRandom(e);
+                std::cout << "Podaj rozmiar: "; std::cin >> amount;
+                ddl.fillRandom(amount);
                 break;
             case 7:
                 ddl.print();

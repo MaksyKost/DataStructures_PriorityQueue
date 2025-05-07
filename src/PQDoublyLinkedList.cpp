@@ -161,7 +161,7 @@ void PriorityQueueDLL::print() const {
 }
 
 // Generowanie losowych danych
-void PriorityQueueDLL::fillRandom(int size, int seed = 123) {
+void PriorityQueueDLL::fillRandom(int size, int seed) {
     for (int i = 0; i < size; ++i) {
         int value = rand() % 10000;    // Losowa wartość (0-9999)
         int priority = rand() % (size * 5); // Priorytet (większy zakres dla lepszego rozkładu)
