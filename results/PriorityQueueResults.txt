@@ -2,109 +2,189 @@
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 1000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 1.0762e-06 s
-ExtractMax: 7.5e-08 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          1.073e-06 s
+ExtractMax:      6.62e-08 s
+Peek:            2.7e-08 s
+ModifyKey (↑):   1.166e-06 s
+ModifyKey (↓):   1.7676e-06 s
+Size:            2.92e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.68e-08 s
-ExtractMax: 4.84e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          4.98e-08 s
+ExtractMax:      4.64e-08 s
+Peek:            2.98e-08 s
+ModifyKey (↑):   2.06e-07 s
+ModifyKey (↓):   1.298e-07 s
+Size:            2.8e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 2000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 2.6582e-06 s
-ExtractMax: 1.248e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          2.6364e-06 s
+ExtractMax:      1.188e-07 s
+Peek:            4.2e-08 s
+ModifyKey (↑):   3.4318e-06 s
+ModifyKey (↓):   5.5852e-06 s
+Size:            2.68e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.72e-08 s
-ExtractMax: 6.54e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.56e-08 s
+ExtractMax:      6.26e-08 s
+Peek:            2.82e-08 s
+ModifyKey (↑):   6.222e-07 s
+ModifyKey (↓):   2.956e-07 s
+Size:            2.98e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 3000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 4.3044e-06 s
-ExtractMax: 1.494e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          4.307e-06 s
+ExtractMax:      1.612e-07 s
+Peek:            3.2e-08 s
+ModifyKey (↑):   5.9292e-06 s
+ModifyKey (↓):   9.5282e-06 s
+Size:            2.76e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.48e-08 s
-ExtractMax: 6.32e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.62e-08 s
+ExtractMax:      6.46e-08 s
+Peek:            2.7e-08 s
+ModifyKey (↑):   6.91e-07 s
+ModifyKey (↓):   4.024e-07 s
+Size:            2.82e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 4000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 5.8694e-06 s
-ExtractMax: 1.406e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          5.7942e-06 s
+ExtractMax:      1.738e-07 s
+Peek:            2.94e-08 s
+ModifyKey (↑):   7.265e-06 s
+ModifyKey (↓):   1.2344e-05 s
+Size:            2.7e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 6.16e-08 s
-ExtractMax: 6.74e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.74e-08 s
+ExtractMax:      6.56e-08 s
+Peek:            2.72e-08 s
+ModifyKey (↑):   5.988e-07 s
+ModifyKey (↓):   3.376e-07 s
+Size:            2.82e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 5000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 7.4668e-06 s
-ExtractMax: 2.5e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          6.9544e-06 s
+ExtractMax:      1.774e-07 s
+Peek:            3.28e-08 s
+ModifyKey (↑):   1.01962e-05 s
+ModifyKey (↓):   1.67602e-05 s
+Size:            2.72e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.88e-08 s
-ExtractMax: 7.18e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.98e-08 s
+ExtractMax:      6.9e-08 s
+Peek:            2.9e-08 s
+ModifyKey (↑):   7.174e-07 s
+ModifyKey (↓):   5.62e-07 s
+Size:            2.9e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 6000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 8.6476e-06 s
-ExtractMax: 2.244e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          8.687e-06 s
+ExtractMax:      2.124e-07 s
+Peek:            3.32e-08 s
+ModifyKey (↑):   1.3646e-05 s
+ModifyKey (↓):   2.14074e-05 s
+Size:            2.42e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.78e-08 s
-ExtractMax: 7.2e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          6.1e-08 s
+ExtractMax:      6.68e-08 s
+Peek:            2.92e-08 s
+ModifyKey (↑):   8.178e-07 s
+ModifyKey (↓):   8.53e-07 s
+Size:            2.74e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 7000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 1.11644e-05 s
-ExtractMax: 4.14e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          1.05408e-05 s
+ExtractMax:      2.542e-07 s
+Peek:            2.98e-08 s
+ModifyKey (↑):   1.78372e-05 s
+ModifyKey (↓):   2.7459e-05 s
+Size:            2.88e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.58e-08 s
-ExtractMax: 8.58e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.86e-08 s
+ExtractMax:      7.26e-08 s
+Peek:            2.92e-08 s
+ModifyKey (↑):   8.556e-07 s
+ModifyKey (↓):   9.708e-07 s
+Size:            3.04e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 8000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 1.2352e-05 s
-ExtractMax: 4.044e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          1.21198e-05 s
+ExtractMax:      2.726e-07 s
+Peek:            3.58e-08 s
+ModifyKey (↑):   2.07594e-05 s
+ModifyKey (↓):   3.18384e-05 s
+Size:            2.98e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 6.56e-08 s
-ExtractMax: 9.14e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          6.26e-08 s
+ExtractMax:      7.54e-08 s
+Peek:            3.06e-08 s
+ModifyKey (↑):   1.0048e-06 s
+ModifyKey (↓):   1.0834e-06 s
+Size:            2.58e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 9000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 1.38214e-05 s
-ExtractMax: 3.204e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          1.40464e-05 s
+ExtractMax:      3.076e-07 s
+Peek:            3.2e-08 s
+ModifyKey (↑):   2.3233e-05 s
+ModifyKey (↓):   3.67478e-05 s
+Size:            3.02e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.84e-08 s
-ExtractMax: 8.14e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.84e-08 s
+ExtractMax:      7.42e-08 s
+Peek:            2.8e-08 s
+ModifyKey (↑):   1.106e-06 s
+ModifyKey (↓):   1.2394e-06 s
+Size:            2.66e-08 s
 
 
 ==== Testowanie kolejki priorytetowej dla rozmiaru: 10000 elementów ====
 
-*** Wyniki dla listy dwukierunkowej: ***
-Insert: 1.62054e-05 s
-ExtractMax: 3.52e-07 s
+*** Wyniki dla listy dwukierunkowej ***
+Insert:          1.62856e-05 s
+ExtractMax:      3.582e-07 s
+Peek:            3.08e-08 s
+ModifyKey (↑):   2.77162e-05 s
+ModifyKey (↓):   4.21714e-05 s
+Size:            2.72e-08 s
 
-*** Wyniki dla kopca binarnego: ***
-Insert: 5.84e-08 s
-ExtractMax: 8e-08 s
+*** Wyniki dla kopca binarnego ***
+Insert:          5.86e-08 s
+ExtractMax:      7.6e-08 s
+Peek:            2.92e-08 s
+ModifyKey (↑):   1.1298e-06 s
+ModifyKey (↓):   1.2242e-06 s
+Size:            2.78e-08 s

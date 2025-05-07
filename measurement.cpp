@@ -132,13 +132,23 @@ int main() {
             seedCount++;
         }
 
-        pqFile << "\n*** Wyniki dla listy dwukierunkowej: ***\n";
-        pqFile << "Insert: " << (total_insert_DLL / seedCount) << " s\n";
-        pqFile << "ExtractMax: " << (total_extractMax_DLL / seedCount) << " s\n";
+        // 🔹 Zapisywanie wyników do pliku
+        pqFile << "\n*** Wyniki dla listy dwukierunkowej ***\n";
+        pqFile << "Insert:          " << (total_insert_DLL / seedCount) << " s\n";
+        pqFile << "ExtractMax:      " << (total_extractMax_DLL / seedCount) << " s\n";
+        pqFile << "Peek:            " << (total_peek_DLL / seedCount) << " s\n";
+        pqFile << "ModifyKey (↑):   " << (total_modifyKeyIncrease_DLL / seedCount) << " s\n";
+        pqFile << "ModifyKey (↓):   " << (total_modifyKeyDecrease_DLL / seedCount) << " s\n";
+        pqFile << "Size:            " << (total_size_DLL / seedCount) << " s\n";
 
-        pqFile << "\n*** Wyniki dla kopca binarnego: ***\n";
-        pqFile << "Insert: " << (total_insert_heap / seedCount) << " s\n";
-        pqFile << "ExtractMax: " << (total_extractMax_heap / seedCount) << " s\n";
+        pqFile << "\n*** Wyniki dla kopca binarnego ***\n";
+        pqFile << "Insert:          " << (total_insert_heap / seedCount) << " s\n";
+        pqFile << "ExtractMax:      " << (total_extractMax_heap / seedCount) << " s\n";
+        pqFile << "Peek:            " << (total_peek_heap / seedCount) << " s\n";
+        pqFile << "ModifyKey (↑):   " << (total_modifyKeyIncrease_heap / seedCount) << " s\n";
+        pqFile << "ModifyKey (↓):   " << (total_modifyKeyDecrease_heap / seedCount) << " s\n";
+        pqFile << "Size:            " << (total_size_heap / seedCount) << " s\n";
+    
 
     }
 
