@@ -15,25 +15,27 @@ The project includes the implementation of key priority queue operations as well
 
 ---
 
-## ⚙️ Implemented Operations
+⚙️ Implemented Operations
 
-For both structures, the following operations are implemented and tested:
-
-- `insert(i, e)` – insert element `e` at index `i`
-- `delete(i)` – delete element at index `i`
-- `find(e)` – search for element `e`
-- `resize()` – (for dynamic arrays) dynamically grow or shrink the array
-- `print()` – display all elements
+The following operations have been implemented for both structures:
+- insert(e, p) – inserts element e with priority p
+- extract-max() – removes and returns the element with the highest priority
+- find-max()/peek() – returns the highest-priority element without removing it
+- modify-key(e, p) – updates the priority of element e to p (increase-key or decrease-key)
+- return-size() – returns the size of the queue
 
 ---
+🧪 Benchmarking
+Performance analysis of both implementations includes:
+- Measuring operation time for different structure sizes (e.g., 1,000 to 10,000 elements)
+- Storing benchmarking results in results/ as .txt files
+- Visualizing and analyzing performance in the final report
 
-## 🧪 Testing and Benchmarking
+---
+🛠️ Technologies
+- Language: C++
+- No STL containers used – all structures are implemented from scratch
 
-Each structure is tested for correctness and benchmarked using large datasets. The performance results are used to compare:
-
-- Average and worst-case insert/delete times
-- Search efficiency
-- Memory usage patterns
 
 ---
 
