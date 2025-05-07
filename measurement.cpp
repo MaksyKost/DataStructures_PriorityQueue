@@ -2,6 +2,7 @@
 #include <chrono>
 #include <fstream>
 #include "src/PQDoublyLinkedList.h"
+#include "src/PQHeap.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -29,113 +30,118 @@ int main() {
         return 1;
     }
 
-    // Testy dla PriorityQueueDLL
+    // Testy dla PriorityQueueDLL (lista dwukierunkowa)
     for (int size : SIZES) {
         cout << "\n\n==== Testowanie kolejki priorytetowej dla rozmiaru: " 
              << size << " elementów ====" << endl;
         pqFile << "\n\n==== Testowanie kolejki priorytetowej dla rozmiaru: " 
                << size << " elementów ====" << endl;
 
-        double total_insert = 0.0;
-        double total_extractMax = 0.0;
-        double total_peek = 0.0;
-        double total_modifyKeyIncrease = 0.0;
-        double total_modifyKeyDecrease = 0.0;
-        double total_size = 0.0;
+        double total_insert_DLL = 0.0;
+        double total_extractMax_DLL = 0.0;
+        double total_peek_DLL = 0.0;
+        double total_modifyKeyIncrease_DLL = 0.0;
+        double total_modifyKeyDecrease_DLL = 0.0;
+        double total_size_DLL = 0.0;
+
+        double total_insert_heap = 0.0;
+        double total_extractMax_heap = 0.0;
+        double total_peek_heap = 0.0;
+        double total_modifyKeyIncrease_heap = 0.0;
+        double total_modifyKeyDecrease_heap = 0.0;
+        double total_size_heap = 0.0;
+
         int seedCount = 0;
 
         for (int seed : SEEDS) {
             srand(seed);
 
-            double insert_sum = 0.0;
-            double extractMax_sum = 0.0;
-            double peek_sum = 0.0;
-            double modifyKeyIncrease_sum = 0.0;
-            double modifyKeyDecrease_sum = 0.0;
-            double size_sum = 0.0;
+            PriorityQueueDLL pqDLL;
+            HeapPriorityQueue pqHeap;
 
-            PriorityQueueDLL pq;
+            double insert_sum_DLL = 0.0, insert_sum_heap = 0.0;
+            double extractMax_sum_DLL = 0.0, extractMax_sum_heap = 0.0;
+            double peek_sum_DLL = 0.0, peek_sum_heap = 0.0;
+            double modifyKeyIncrease_sum_DLL = 0.0, modifyKeyIncrease_sum_heap = 0.0;
+            double modifyKeyDecrease_sum_DLL = 0.0, modifyKeyDecrease_sum_heap = 0.0;
+            double size_sum_DLL = 0.0, size_sum_heap = 0.0;
 
             for (int t = 0; t < TESTS; t++) {
-                pq.fillRandom(size, seed); // тут добавил seed, по сути должен вставляться seed что ты выше из таблицы берешь. а по умолчанию стоит 123. 
+                pqDLL.fillRandom(size);
+                pqHeap.fillRandom(size);
 
-                // Pomiar operacji insert (dodanie losowego elementu)
+                // 📌 TESTY INSERT
                 int value = rand() % 10000;
                 int priority = rand() % (size * 5);
-                insert_sum += measure_time([&]() {
-                    pq.insert(value, priority);
-                });
+                insert_sum_DLL += measure_time([&]() { pqDLL.insert(value, priority); });
+                insert_sum_heap += measure_time([&]() { pqHeap.insert(value, priority); });
 
-                // Pomiar operacji extractMax (usunięcie maksymalnego elementu)
-                if (pq.returnSize() > 0) {
-                    extractMax_sum += measure_time([&]() {
-                        pq.extractMax();
-                    });
+                // 📌 TESTY EXTRACT-MAX
+                if (pqDLL.returnSize() > 0) {
+                    extractMax_sum_DLL += measure_time([&]() { pqDLL.extractMax(); });
+                }
+                if (pqHeap.returnSize() > 0) {
+                    extractMax_sum_heap += measure_time([&]() { pqHeap.extractMax(); });
                 }
 
-                // Pomiar operacji peek (podejrzenie maksymalnego elementu)
-                if (pq.returnSize() > 0) {
-                    peek_sum += measure_time([&]() {
-                        pq.peek();
-                    });
+                // 📌 TESTY PEEK
+                if (pqDLL.returnSize() > 0) {
+                    peek_sum_DLL += measure_time([&]() { pqDLL.peek(); });
+                }
+                if (pqHeap.returnSize() > 0) {
+                    peek_sum_heap += measure_time([&]() { pqHeap.peek(); });
                 }
 
-                // Pomiar operacji modifyKeyIncrease (zwiększenie priorytetu)
-                if (pq.returnSize() > 0) {
-                    int modify_value = rand() % 10000;
-                    int new_priority_high = rand() % (size * 10); // Wyższy priorytet
-                    modifyKeyIncrease_sum += measure_time([&]() {
-                        pq.modifyKey(modify_value, new_priority_high);
-                    });
-                }
+                // 📌 TESTY MODIFY-KEY (INCREASE)
+                int new_priority_high = rand() % (size * 10);
+                modifyKeyIncrease_sum_DLL += measure_time([&]() { pqDLL.modifyKey(value, new_priority_high); });
+                modifyKeyIncrease_sum_heap += measure_time([&]() { pqHeap.modifyKey(value, new_priority_high); });
 
-                // Pomiar operacji modifyKeyDecrease (zmniejszenie priorytetu)
-                if (pq.returnSize() > 0) {
-                    int modify_value = rand() % 10000;
-                    int new_priority_low = rand() % (size / 2); // Niższy priorytet
-                    modifyKeyDecrease_sum += measure_time([&]() {
-                        pq.modifyKey(modify_value, new_priority_low);
-                    });
-                }
+                // 📌 TESTY MODIFY-KEY (DECREASE)
+                int new_priority_low = rand() % (size / 2);
+                modifyKeyDecrease_sum_DLL += measure_time([&]() { pqDLL.modifyKey(value, new_priority_low); });
+                modifyKeyDecrease_sum_heap += measure_time([&]() { pqHeap.modifyKey(value, new_priority_low); });
 
-                // Pomiar operacji size (zwrócenie rozmiaru)
-                size_sum += measure_time([&]() {
-                    pq.returnSize();
-                });
-                pq.clear();
+                // 📌 TESTY SIZE
+                size_sum_DLL += measure_time([&]() { pqDLL.returnSize(); });
+                size_sum_heap += measure_time([&]() { pqHeap.returnSize(); });
+
+                pqDLL.clear();
+                pqHeap.clear();
             }
 
             // Średnie wyniki dla danego seeda
-            total_insert += insert_sum / TESTS;
-            total_extractMax += extractMax_sum / TESTS;
-            total_peek += peek_sum / TESTS;
-            total_modifyKeyIncrease += modifyKeyIncrease_sum / TESTS;
-            total_modifyKeyDecrease += modifyKeyDecrease_sum / TESTS;
-            total_size += size_sum / TESTS;
+            total_insert_DLL += insert_sum_DLL / TESTS;
+            total_insert_heap += insert_sum_heap / TESTS;
+
+            total_extractMax_DLL += extractMax_sum_DLL / TESTS;
+            total_extractMax_heap += extractMax_sum_heap / TESTS;
+
+            total_peek_DLL += peek_sum_DLL / TESTS;
+            total_peek_heap += peek_sum_heap / TESTS;
+
+            total_modifyKeyIncrease_DLL += modifyKeyIncrease_sum_DLL / TESTS;
+            total_modifyKeyIncrease_heap += modifyKeyIncrease_sum_heap / TESTS;
+
+            total_modifyKeyDecrease_DLL += modifyKeyDecrease_sum_DLL / TESTS;
+            total_modifyKeyDecrease_heap += modifyKeyDecrease_sum_heap / TESTS;
+
+            total_size_DLL += size_sum_DLL / TESTS;
+            total_size_heap += size_sum_heap / TESTS;
+
             seedCount++;
         }
 
-        cout << "\n*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru " 
-             << size << " (średnia z " << seedCount << " seedów):\n";
-        pqFile << "\n*** Średnie wyniki dla kolejki priorytetowej dla rozmiaru " 
-               << size << " (średnia z " << seedCount << " seedów):\n";
-        
-        cout << "  Wstawienie (insert):          " << (total_insert / seedCount) << " s\n";
-        cout << "  Pobranie max (extractMax):    " << (total_extractMax / seedCount) << " s\n";
-        cout << "  Podejrzenie max (peek):       " << (total_peek / seedCount) << " s\n";
-        cout << "  Zwiększenie priorytetu:       " << (total_modifyKeyIncrease / seedCount) << " s\n";
-        cout << "  Zmniejszenie priorytetu:      " << (total_modifyKeyDecrease / seedCount) << " s\n";
-        cout << "  Zwrot rozmiaru (size):        " << (total_size / seedCount) << " s\n";
+        pqFile << "\n*** Wyniki dla listy dwukierunkowej: ***\n";
+        pqFile << "Insert: " << (total_insert_DLL / seedCount) << " s\n";
+        pqFile << "ExtractMax: " << (total_extractMax_DLL / seedCount) << " s\n";
 
-        pqFile << "  Wstawienie (insert):          " << (total_insert / seedCount) << " s\n";
-        pqFile << "  Pobranie max (extractMax):    " << (total_extractMax / seedCount) << " s\n";
-        pqFile << "  Podejrzenie max (peek):       " << (total_peek / seedCount) << " s\n";
-        pqFile << "  Zwiększenie priorytetu:       " << (total_modifyKeyIncrease / seedCount) << " s\n";
-        pqFile << "  Zmniejszenie priorytetu:      " << (total_modifyKeyDecrease / seedCount) << " s\n";
-        pqFile << "  Zwrot rozmiaru (size):        " << (total_size / seedCount) << " s\n";
+        pqFile << "\n*** Wyniki dla kopca binarnego: ***\n";
+        pqFile << "Insert: " << (total_insert_heap / seedCount) << " s\n";
+        pqFile << "ExtractMax: " << (total_extractMax_heap / seedCount) << " s\n";
+
     }
 
-    // Zamknięcie pliku
     pqFile.close();
     return 0;
 }

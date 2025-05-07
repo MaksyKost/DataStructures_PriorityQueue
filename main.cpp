@@ -163,6 +163,7 @@ void menuDDL(PriorityQueueDLL& ddl) {
 
 int main()
 {
+    srand(seed);
     system("chcp 65001 > nul");
     int choice;
     do {
