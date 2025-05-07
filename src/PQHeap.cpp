@@ -114,12 +114,10 @@ void HeapPriorityQueue::modifyKey(int e, int newPriority) {
     else down(a);
 }
 
-void HeapPriorityQueue::fillRandom(int size, int seed) {
-    srand(seed);
-
+void HeapPriorityQueue::fillRandom(int size) {
     for (int i = 0; i < size; ++i) {
-        int value = rand() % 1001;
-        int priority = rand() % 101;
+        int value = rand() % 10000;
+        int priority = rand() % (size * 5);
         insert(value, priority);
     }
 }

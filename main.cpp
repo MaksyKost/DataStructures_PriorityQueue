@@ -96,7 +96,7 @@ void menuHeap(HeapPriorityQueue& heap) {
                 break;
             case 6:
                 std::cout << "Podaj rozmiar: "; std::cin >> e;
-                heap.fillRandom(e, seed);
+                heap.fillRandom(e);
                 break;
             case 7:
                 heap.print();
@@ -166,6 +166,7 @@ void menuDDL(PriorityQueueDLL& ddl) {
 
 int main()
 {
+    srand(seed);
     system("chcp 65001 > nul");
     int choice;
     do {
