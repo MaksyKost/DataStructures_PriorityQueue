@@ -47,7 +47,7 @@ public:
     // Pomocnicza funkcja do wyświetlania zawartości kolejki (dla celów debugowania)
     void print() const;
 
-    void fillRandom(int size);
+    void fillRandom(int size, int seed = 123);
 };
 
 #endif // PRIORITYQUEUE_DLL_H

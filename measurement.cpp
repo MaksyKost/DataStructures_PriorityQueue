@@ -57,7 +57,7 @@ int main() {
             PriorityQueueDLL pq;
 
             for (int t = 0; t < TESTS; t++) {
-                pq.fillRandom(size);
+                pq.fillRandom(size, seed); // тут добавил seed, по сути должен вставляться seed что ты выше из таблицы берешь. а по умолчанию стоит 123. 
 
                 // Pomiar operacji insert (dodanie losowego elementu)
                 int value = rand() % 10000;

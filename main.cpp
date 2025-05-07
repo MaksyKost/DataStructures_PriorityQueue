@@ -1,48 +1,165 @@
 #include <iostream>
+#include <chrono>
+#include <thread>
 #include "src/PQDoublyLinkedList.h"
+#include "src/PQHeap.h"
+
+int seed = 123;
+
+void fancyMenuTitle() {
+    system("color 0C");
+
+    std::string title = R"(
+ __  __ _____ _   _ _   _ 
+|  \/  | ____| \ | | | | |
+| |\/| |  _| |  \| | | | |
+| |  | | |___| |\  | \_/ |
+|_|  |_|_____|_| \_|\___/
+)";
+
+    for (char c : title) {
+        std::cout << c;
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+}
+
+
+void menuHeap(HeapPriorityQueue& heap) {
+    int choice, e, p, index;
+    do {
+        std::cout << "\n|------------------------- Heap PQ MENU ------------------------|\n";
+        std::cout << "| 1. Dodanie elementu e o priorytecie p                           |\n";
+        std::cout << "| 2. Usunięcie i zwrócenie elementu o największym priorytecie     |\n";
+        std::cout << "| 3. Zwrócenie elementu o największym priorytecie                 |\n";
+        std::cout << "| 4. Zmiana priorytetu elementu e na p                            |\n";
+        std::cout << "| 5. Zwrócenie rozmiaru                                           |\n";
+        std::cout << "| 6. Wypełnianie losowymi elementami                              |\n";
+        std::cout << "| 7. Wyświetlanie kolejki                                         |\n";
+        std::cout << "| 8. Czyszczenie kolejki                                          |\n";
+        std::cout << "| 0. Wyjdź                                                        |\n";
+        std::cout << "|-----------------------------------------------------------------|\n";
+        std::cout << "Twój wybór: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                std::cout << "Podaj wartość: "; std::cin >> e;
+                std::cout << "Podaj priorytet: "; std::cin >> p;
+                heap.insert(e, p);
+                break;
+            case 2:
+                Element max = heap.extractMax();
+                std::cout << "Usunięto: (" << max.e << ", " << max.p << ")\n";
+                break;
+            case 3:
+                Element top = heap.peek();
+                std::cout << "Najwyższy priorytet: (" << top.e << ", " << top.p << ")\n";
+                break;
+            case 4:
+                std::cout << "Podaj wartość: "; std::cin >> e;
+                std::cout << "Podaj priorytet: "; std::cin >> p;
+                heap.modifyKey(e, p);
+                break;
+            case 5:
+                std::cout << "Rozmiar kolejki: " << heap.returnSize() << "\n";
+                break;
+            case 6:
+                std::cout << "Podaj rozmiar: "; std::cin >> e;
+                heap.fillRandom(e, seed);
+                break;
+            case 7:
+                heap.print();
+                break;
+            case 8:
+                heap.clear();
+                break;
+        }
+
+    } while (choice != 0);
+}
+
+void menuDDL(PriorityQueueDLL& ddl) {
+    int choice, e, p, index;
+    do {
+        std::cout << "\n|------------------------- Doubly Linked List PQ MENU ------------------------|\n";
+        std::cout << "| 1. Dodanie elementu e o priorytecie p                                         |\n";
+        std::cout << "| 2. Usunięcie i zwrócenie elementu o największym priorytecie                   |\n";
+        std::cout << "| 3. Zwrócenie elementu o największym priorytecie                               |\n";
+        std::cout << "| 4. Zmiana priorytetu elementu e na p                                          |\n";
+        std::cout << "| 5. Zwrócenie rozmiaru                                                         |\n";
+        std::cout << "| 6. Wypełnianie losowymi elementami                                            |\n";
+        std::cout << "| 7. Wyświetlanie kolejki                                                       |\n";
+        std::cout << "| 8. Czyszczenie kolejki                                                        |\n";
+        std::cout << "| 0. Wyjdź                                                                      |\n";
+        std::cout << "|-------------------------------------------------------------------------------|\n";
+        std::cout << "Twój wybór: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                std::cout << "Podaj wartość: "; std::cin >> e;
+                std::cout << "Podaj priorytet: "; std::cin >> p;
+                ddl.insert(e, p);
+                break;
+            case 2:
+                Element max = ddl.extractMax();
+                std::cout << "Usunięto: (" << max.e << ", " << max.p << ")\n";
+                break;
+            case 3:
+                Element top = ddl.peek();
+                std::cout << "Najwyższy priorytet: (" << top.e << ", " << top.p << ")\n";
+                break;
+            case 4:
+                std::cout << "Podaj wartość: "; std::cin >> e;
+                std::cout << "Podaj priorytet: "; std::cin >> p;
+                ddl.modifyKey(e, p);
+                break;
+            case 5:
+                std::cout << "Rozmiar kolejki: " << ddl.returnSize() << "\n";
+                break;
+            case 6:
+                std::cout << "Podaj rozmiar: "; std::cin >> e;
+                ddl.fillRandom(e);
+                break;
+            case 7:
+                ddl.print();
+                break;
+            case 8:
+                ddl.clear();
+                break;
+        }
+
+    } while (choice != 0);
+}
 
 
 int main()
 {
-    PriorityQueueDLL pq;
+    system("chcp 65001 > nul");
+    int choice;
+    do {
+        fancyMenuTitle();
+        std::cout << "----------------  Wybierz opcję ---------------\n";
+        std::cout << "| 1. Implementacja KP na kopcu                |\n";
+        std::cout << "| 2. Implementacja KP liście dwukierunkowej   |\n";
+        std::cout << "| 0. Wyjdź                                    |\n";
+        std::cout << "Twój wybór: ";
+        std::cin >> choice;
 
-    // Wstawienie kilku elementów do kolejki
-    pq.insert(10, 5);
-    pq.insert(20, 10);
-    pq.insert(30, 3);
-    pq.insert(40, 15);
-    
-    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
+        switch (choice) {
+            case 1: {
+                HeapPriorityQueue heapPQ;
+                menuHeap(heapPQ);
+                break;
+            }
+            case 2: {
+                PriorityQueueDLL dllPQ;
+                menuDDL(dllPQ);
+                break;
+            }
+        }
 
-
-    // Wyświetlenie kolejki
-    std::cout << "Kolejka po wstawieniu elementów:\n";
-    pq.print();
-    
-    
-    // Usunięcie elementu o najwyższym priorytecie
-    std::cout << "Usuwanie elementu o najwyższym priorytecie...\n";
-    pq.extractMax();
-    pq.print();
-    
-    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
-
-
-
-    // Modyfikacja priorytetu jednego z elementów
-    std::cout << "Modyfikacja priorytetu elementu 20 na 18...\n";
-    pq.modifyKey(20, 18);
-    pq.print();
-
-    // Wypełnienie kolejki losowymi danymi
-    std::cout << "Dodanie losowych danych...\n";
-    pq.clear();
-    pq.fillRandom(6);
-    pq.print();
-
-    std::cout << "Rozmiar kolejki po wstawieniu elementów:\t" << pq.returnSize() << std::endl;
-    
-
+    } while (choice != 0);
 
     return 0;
 }
