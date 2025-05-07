@@ -70,13 +70,13 @@ int main() {
                 pqDLL.fillRandom(size);
                 pqHeap.fillRandom(size);
 
-                // 📌 TESTY INSERT
+                // TESTY INSERT
                 int value = rand() % 10000;
                 int priority = rand() % (size * 5);
                 insert_sum_DLL += measure_time([&]() { pqDLL.insert(value, priority); });
                 insert_sum_heap += measure_time([&]() { pqHeap.insert(value, priority); });
 
-                // 📌 TESTY EXTRACT-MAX
+                // TESTY EXTRACT-MAX
                 if (pqDLL.returnSize() > 0) {
                     extractMax_sum_DLL += measure_time([&]() { pqDLL.extractMax(); });
                 }
@@ -84,7 +84,7 @@ int main() {
                     extractMax_sum_heap += measure_time([&]() { pqHeap.extractMax(); });
                 }
 
-                // 📌 TESTY PEEK
+                // TESTY PEEK
                 if (pqDLL.returnSize() > 0) {
                     peek_sum_DLL += measure_time([&]() { pqDLL.peek(); });
                 }
@@ -92,17 +92,17 @@ int main() {
                     peek_sum_heap += measure_time([&]() { pqHeap.peek(); });
                 }
 
-                // 📌 TESTY MODIFY-KEY (INCREASE)
+                // TESTY MODIFY-KEY (INCREASE)
                 int new_priority_high = rand() % (size * 10);
                 modifyKeyIncrease_sum_DLL += measure_time([&]() { pqDLL.modifyKey(value, new_priority_high); });
                 modifyKeyIncrease_sum_heap += measure_time([&]() { pqHeap.modifyKey(value, new_priority_high); });
 
-                // 📌 TESTY MODIFY-KEY (DECREASE)
+                // TESTY MODIFY-KEY (DECREASE)
                 int new_priority_low = rand() % (size / 2);
                 modifyKeyDecrease_sum_DLL += measure_time([&]() { pqDLL.modifyKey(value, new_priority_low); });
                 modifyKeyDecrease_sum_heap += measure_time([&]() { pqHeap.modifyKey(value, new_priority_low); });
 
-                // 📌 TESTY SIZE
+                // TESTY SIZE
                 size_sum_DLL += measure_time([&]() { pqDLL.returnSize(); });
                 size_sum_heap += measure_time([&]() { pqHeap.returnSize(); });
 
