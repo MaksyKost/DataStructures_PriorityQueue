@@ -1,26 +1,50 @@
 #include <iostream>
 #include <chrono>
+#include <string>
+#include <windows.h>
 #include <thread>
 #include "src/PQDoublyLinkedList.h"
 #include "src/PQHeap.h"
 
 int seed = 123;
 
+void setTextColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
 void fancyMenuTitle() {
-    system("color 0C");
+    const std::string lines[] = {
+        " __  __ _____ _   _ _   _ ",
+        "|  \\/  | ____| \\ | | | | |",
+        "| |\\/| |  _| |  \\| | | | |",
+        "| |  | | |___| |\\  | \\_/ |",
+        "|_|  |_|_____|_| \\_|\\___/ "
+    };
 
-    std::string title = R"(
- __  __ _____ _   _ _   _ 
-|  \/  | ____| \ | | | | |
-| |\/| |  _| |  \| | | | |
-| |  | | |___| |\  | \_/ |
-|_|  |_|_____|_| \_|\___/
-)";
+    int colors[] = { 0x0C, 0x0A, 0x0E, 0x09, 0x0B, 0x0D, 0x08 };
 
-    for (char c : title) {
-        std::cout << c;
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    std::srand(static_cast<unsigned int>(std::time(0)));
+    system("cls");
+    for (const auto& line : lines) {
+        for (size_t i = 0; i < line.size(); ++i) {
+            setTextColor(colors[std::rand() % 7]);
+            std::cout << line[i] << std::flush;
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+        std::cout << '\n';
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
+    for (int i = 0; i < 5; ++i) {
+        setTextColor(colors[i % 7]);
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::cout << "\r";
+        for (const auto& line : lines) {
+            std::cout << line << '\n';
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::cout << "\r";
+    }
+    setTextColor(0x07);
 }
 
 
