@@ -8,6 +8,7 @@ struct Element {
 
     Element(int value = 0, int priority = 0) : e(value), p(priority) {}
     
+    //przeciążenie operatorów
     bool operator>(const Element &other) const {
         return p > other.p;
     }
@@ -21,6 +22,7 @@ struct Element {
     }
 };
 
+// klasa bazowa
 class PriorityQueue {
 public:
     virtual void resize() = 0;
@@ -35,6 +37,7 @@ public:
     virtual ~PriorityQueue() {}
 };
 
+// klasa pochodna
 class HeapPriorityQueue : public PriorityQueue {
 private:
     Element* heap;
